@@ -32,6 +32,8 @@ return {
                 "vimdoc",
                 "xml",
                 "yaml",
+                "verilog",
+                "latex",
             },
         },
         -- have to pass opts to nvim-treesitter.configs

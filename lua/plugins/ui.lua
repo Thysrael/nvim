@@ -1,6 +1,37 @@
 function get_relative_project_path()
     local current_file = vim.fn.expand('%:p')
-    if current_file == '' then return '' end
+
+    -- 定义各种缓冲区状态符号
+    local symbols = {
+        modified = '[+]',      -- 文件已修改
+        readonly = '[-]',      -- 文件只读或不可修改
+        unnamed = '[No Name]', -- 无名缓冲区
+        newfile = '[New]',     -- 新创建且未保存的文件
+    }
+
+    -- 获取当前缓冲区的状态
+    local function get_buffer_status()
+        if vim.bo.buftype == 'quickfix' or vim.bo.buftype == 'nofile' then
+            return ''  -- 特殊缓冲区不显示状态
+        end
+
+        if vim.bo.readonly then
+            return symbols.readonly
+        elseif vim.bo.modified then
+            return symbols.modified
+        elseif current_file == '' then
+            -- 区分全新文件和未命名缓冲区
+            return vim.bo.modifiable and symbols.newfile or symbols.unnamed
+        end
+        return ''
+    end
+
+    local buffer_status = get_buffer_status()
+
+    -- 如果当前没有有效文件路径，只返回状态
+    if current_file == '' then
+        return buffer_status
+    end
 
     -- 常见项目根目录标记文件/目录
     local root_markers = {
@@ -29,7 +60,8 @@ function get_relative_project_path()
 
     -- 未找到项目根目录的处理
     if not root_found then
-        return vim.fn.fnamemodify(current_file, ':t')  -- 返回文件名
+        local result = vim.fn.fnamemodify(current_file, ':t')  -- 返回文件名
+        return buffer_status ~= '' and (result .. ' ' .. buffer_status) or result
     end
 
     -- 确保路径格式一致
@@ -43,28 +75,29 @@ function get_relative_project_path()
 
     -- 如果当前文件就在根目录下
     if relative_in_project == '' then
-        return root_dir_name
+        return buffer_status ~= '' and (root_dir_name .. ' ' .. buffer_status) or root_dir_name
     end
 
     -- 拼接根目录名称和项目内相对路径
-    return root_dir_name .. '/' .. relative_in_project
+    local result = root_dir_name .. '/' .. relative_in_project
+    return buffer_status ~= '' and (result .. ' ' .. buffer_status) or result
 end
 
 return {
-    -- {
-    --     'Mofiqul/dracula.nvim',
-    --     lazy = false,
-    --     config = function()
-    -- 	    vim.cmd.colorscheme("dracula")
-    -- 	end,
-    -- },
     {
-        'rebelot/kanagawa.nvim',
+        'Mofiqul/dracula.nvim',
         lazy = false,
         config = function()
-            vim.cmd.colorscheme('kanagawa')
+            vim.cmd.colorscheme("dracula")
         end,
     },
+    -- {
+    --     'rebelot/kanagawa.nvim',
+    --     lazy = false,
+    --     config = function()
+    --         vim.cmd.colorscheme('kanagawa')
+    --     end,
+    -- },
     {
         'nvim-tree/nvim-web-devicons',
         opts = {
@@ -107,8 +140,8 @@ return {
                         separator = '',
                         padding = { left = 1, right = 0 },
                     },
-                    -- get_relative_project_path,
-                    'filename'
+                    get_relative_project_path,
+                    -- 'filename'
                 },
 
                 lualine_x = {
@@ -132,4 +165,32 @@ return {
             },
         },
     },
+    {
+        "folke/snacks.nvim",
+        lazy = false,
+        priority = 1000,
+        opts = {
+            image = {
+                enabled = true,
+                doc = {
+                    enabled = true,
+                    inline = true,
+                    float = true,
+                    max_width = 80,
+                    max_height = 40,
+                    conceal = function(lang, type)
+                        return false
+                    end,
+                },
+
+                math = {
+                    enabled = true, -- enable math expression rendering
+                    latex = {
+                        font_size = "normalsize",
+                    },
+                },
+
+            },
+        },
+    }
 }
