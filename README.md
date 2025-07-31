@@ -3,3 +3,4 @@
 ## Dependencies
 
 - luarocks
+- python-pynvim
