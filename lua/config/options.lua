@@ -1,6 +1,7 @@
 -- line number
 vim.o.number = true
 vim.o.relativenumber = true
+vim.o.numberwidth = 2
 
 -- Enable mouse mode
 vim.o.mouse = 'a'
