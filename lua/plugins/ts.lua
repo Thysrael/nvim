@@ -7,6 +7,7 @@ return {
             highlight = { enable = true, additional_vim_regex_highlighting = false, },
             indent = { enable = true },
             sync_install = false,
+            ignore_install = { 'org' },
             ensure_installed = {
                 "bash",
                 "c",
