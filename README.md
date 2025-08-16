@@ -11,3 +11,5 @@
 
 - comment
 - format
+- code fold
+- auto pairs

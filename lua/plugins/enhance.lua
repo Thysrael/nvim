@@ -1,7 +1,16 @@
 return {
---    {
---        "ibhagwan/fzf-lua",
---        dependencies = { "nvim-tree/nvim-web-devicons" },
---        opts = {}
---    }
+    {
+        "folke/which-key.nvim",
+        opts = {
+            spec = {
+                { "<BS>", desc = "Decrement Selection", mode = "x" },
+                { "<c-space>", desc = "Increment Selection", mode = { "x", "n" } },
+            },
+        },
+    }
+    --    {
+    --        "ibhagwan/fzf-lua",
+    --        dependencies = { "nvim-tree/nvim-web-devicons" },
+    --        opts = {}
+    --    }
 }

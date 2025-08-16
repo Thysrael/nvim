@@ -36,10 +36,20 @@ return {
                 "verilog",
                 "latex",
             },
+
+            incremental_selection = {
+                enable = true,
+                keymaps = {
+                    init_selection = "<C-space>",
+                    node_incremental = "<C-space>",
+                    scope_incremental = false,
+                    node_decremental = "<bs>",
+                },
+            },
         },
         -- have to pass opts to nvim-treesitter.configs
         config = function(_, opts)
-			require("nvim-treesitter.configs").setup(opts)
-		end,
+            require("nvim-treesitter.configs").setup(opts)
+        end,
     },
 }
