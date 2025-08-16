@@ -2,5 +2,12 @@
 
 ## Dependencies
 
-- luarocks
-- python-pynvim
+- fd
+- tree-sitter-cli
+- lazygit
+- rg
+
+## TODO
+
+- comment
+- format

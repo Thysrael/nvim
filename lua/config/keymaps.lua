@@ -12,6 +12,10 @@ vim.keymap.set('n', '<C-h>', '<C-w><C-h>', { desc = 'Move focus to the left wind
 vim.keymap.set('n', '<C-l>', '<C-w><C-l>', { desc = 'Move focus to the right window' })
 vim.keymap.set('n', '<C-j>', '<C-w><C-j>', { desc = 'Move focus to the lower window' })
 vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
+vim.keymap.set('n', '<C-o>', '<C-w><C-w>', { desc = 'Move focus looply' })
+vim.keymap.set('n', '<leader>o', '<C-w><C-w>', { desc = 'Move focus looply' })
+vim.keymap.set("n", "<leader>2", ":split<CR>", {desc = "split"})
+vim.keymap.set("n", "<leader>3", ":vsplit<CR>", {desc = "vsplit"})
 
 -- Resize with arrows
 -- delta: 2 lines
@@ -28,3 +32,16 @@ vim.api.nvim_create_autocmd('TextYankPost', {
     vim.hl.on_yank()
   end,
 })
+
+-- movv enhancement
+vim.keymap.set({'n', 'x'}, 'H', '0', {desc = 'Move to start of line'})
+vim.keymap.set({'n', 'x'}, 'L', 'g_', {desc = 'Move to last non-blank character of line'})
+vim.keymap.set('o', 'H', '0', {desc = 'Operator to start of line'})
+vim.keymap.set('o', 'L', 'g_', {desc = 'Operator to end of line (non-blank)'})
+
+vim.keymap.set('i', '<C-f>', '<Right>', {desc = 'Move cursor right (Emacs style)'})
+vim.keymap.set('i', '<C-b>', '<Left>', {desc = 'Move cursor left (Emacs style)'})
+vim.keymap.set('i', '<C-n>', '<Down>', {desc = 'Move cursor down (Emacs style)'})
+vim.keymap.set('i', '<C-p>', '<Up>', {desc = 'Move cursor up (Emacs style)'})
+vim.keymap.set('i', '<C-a>', '<Home>', {desc = 'Move to beginning of line (Emacs style)'})
+vim.keymap.set('i', '<C-e>', '<End>', {desc = 'Move to end of line (Emacs style)'})

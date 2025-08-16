@@ -58,3 +58,29 @@ vim.opt.tabstop = 4 -- number of visual spaces per TAB
 vim.opt.softtabstop = 4 -- number of spacesin tab when editing
 vim.opt.shiftwidth = 4 -- insert 4 spaces on a tab
 vim.opt.expandtab = true -- tabs are spaces, mainly because of python
+
+-- wrap
+-- default unwrap
+vim.opt.wrap = false
+vim.opt.textwidth = 0
+vim.opt.wrapmargin = 0
+
+-- the file need wrap
+local wrap_filetypes = {
+  "markdown",
+  "org",       -- org-mode
+  "tex"        -- LaTeX
+}
+
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = wrap_filetypes,
+  callback = function()
+    vim.opt_local.wrap = true
+    vim.opt_local.linebreak = true
+    vim.opt_local.breakindent = true
+    vim.opt_local.showbreak = '↳ '
+ end
+})
+
+-- visual block enhancement
+vim.opt.virtualedit = "block"
