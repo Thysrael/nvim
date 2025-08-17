@@ -35,6 +35,7 @@ return {
                 "yaml",
                 "verilog",
                 "latex",
+                "make",
             },
 
             incremental_selection = {
