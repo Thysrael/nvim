@@ -38,7 +38,7 @@ return {
             },
         },
         keys = {
-            { '<leader><spac>', function() Snacks.picker() end, desc = 'Pickers' },
+            { '<leader><space>', function() Snacks.picker() end, desc = 'Pickers' },
             { "<leader>p", function() Snacks.picker.smart() end, desc = "Smart" },
             { "<leader>/", function() Snacks.picker.grep() end, desc = "Grep" },
 
