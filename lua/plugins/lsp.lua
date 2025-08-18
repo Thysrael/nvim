@@ -10,7 +10,8 @@ return {
         -- example using `opts` for defining servers
         opts = {
             servers = {
-                lua_ls = {}
+                lua_ls = {},
+                pyright = {},
             }
         },
        -- example calling setup directly for each LSP
@@ -19,6 +20,7 @@ return {
             local lspconfig = require('lspconfig')
 
             lspconfig['lua_ls'].setup({ capabilities = capabilities })
+            lspconfig['pyright'].setup({ capabilities = capabilities })
 
             vim.diagnostic.config({
                 underline = false,
