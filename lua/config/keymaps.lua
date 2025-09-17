@@ -34,10 +34,10 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 })
 
 -- movv enhancement
-vim.keymap.set({'n', 'x'}, 'H', '0', {desc = 'Move to start of line'})
-vim.keymap.set({'n', 'x'}, 'L', 'g_', {desc = 'Move to last non-blank character of line'})
-vim.keymap.set('o', 'H', '0', {desc = 'Operator to start of line'})
-vim.keymap.set('o', 'L', 'g_', {desc = 'Operator to end of line (non-blank)'})
+vim.keymap.set({'n', 'x'}, 'H', '^', {desc = 'Move to start of line'})
+vim.keymap.set({'n', 'x'}, 'L', '$', {desc = 'Move to last non-blank character of line'})
+vim.keymap.set('o', 'H', '^', {desc = 'Operator to start of line'})
+vim.keymap.set('o', 'L', '$', {desc = 'Operator to end of line (non-blank)'})
 
 vim.keymap.set('i', '<C-f>', '<Right>', {desc = 'Move cursor right (Emacs style)'})
 vim.keymap.set('i', '<C-b>', '<Left>', {desc = 'Move cursor left (Emacs style)'})
