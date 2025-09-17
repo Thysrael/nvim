@@ -36,6 +36,13 @@ return {
                     {
                         'mode',
                     },
+                    {
+                        function()
+                            local reg = vim.fn.reg_recording()
+                            if reg == "" then return "" end -- not recording
+                            return "@" .. reg
+                        end,
+                    },
                 },
                 lualine_b = {
                     {
