@@ -1,5 +1,5 @@
 -- Clear highlights on search when pressing <Esc> in normal mode
-vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
+vim.keymap.set('n', 'esc', '<cmd>nohlsearch<CR>')
 
 -- Diagnostic keymaps
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
@@ -33,7 +33,7 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   end,
 })
 
--- movv enhancement
+-- move enhancement
 vim.keymap.set({'n', 'x'}, 'H', '^', {desc = 'Move to start of line'})
 vim.keymap.set({'n', 'x'}, 'L', '$', {desc = 'Move to last non-blank character of line'})
 vim.keymap.set('o', 'H', '^', {desc = 'Operator to start of line'})

@@ -1,6 +1,7 @@
 return {
     {
         'saghen/blink.cmp',
+        cond = not vim.g.vscode,
         -- optional: provides snippets for the snippet source
         dependencies = { 'rafamadriz/friendly-snippets' },
 
@@ -29,7 +30,7 @@ return {
             keymap = { preset = 'super-tab' },
 
             -- select by default, auto insert on selection
-            list = { selection = { preselect = true, auto_insert = true } },
+            -- list = { selection = { preselect = true, auto_insert = true } },
             appearance = {
                 -- 'mono' (default) for 'Nerd Font Mono' or 'normal' for 'Nerd Font'
                 -- Adjusts spacing to ensure icons are aligned
@@ -42,7 +43,7 @@ return {
             },
 
             -- Display a preview of the selected item on the current line
-            ghost_text = { enabled = true },
+            -- ghost_text = { enabled = true },
             -- Default list of enabled providers defined so that you can extend it
             -- elsewhere in your config, without redefining it, due to `opts_extend`
             sources = {
