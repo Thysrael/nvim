@@ -1,6 +1,7 @@
 return {
     {
         'rebelot/kanagawa.nvim',
+        cond = not vim.g.vscode,
         lazy = false,
         config = function()
             require('kanagawa').setup({
@@ -25,6 +26,7 @@ return {
 
     {
         'nvim-lualine/lualine.nvim',
+        cond = not vim.g.vscode,
         dependencies = { 'nvim-tree/nvim-web-devicons' },
         opts = {
             options = {
@@ -135,6 +137,7 @@ return {
     },
     {
         "folke/noice.nvim",
+        cond = not vim.g.vscode,
         event = "VeryLazy",
         opts = {
             lsp = {
@@ -164,10 +167,12 @@ return {
     },
     {
         "nvim-treesitter/nvim-treesitter-context",
+        cond = not vim.g.vscode,
         opts = { mode = "cursor", max_lines = 3 },
     },
     {
         'Bekaboo/dropbar.nvim',
+        cond = not vim.g.vscode,
         opts = {
             bar = {
                 sources = function(buf, _)

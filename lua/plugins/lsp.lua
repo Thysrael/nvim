@@ -1,10 +1,12 @@
 return {
     {
         "mason-org/mason.nvim",
+        cond = not vim.g.vscode,
         opts = {}
     },
     {
         'neovim/nvim-lspconfig',
+        cond = not vim.g.vscode,
         dependencies = { 'saghen/blink.cmp' },
 
         -- example using `opts` for defining servers

@@ -1,6 +1,7 @@
 return {
     {
         "folke/which-key.nvim",
+        cond = not vim.g.vscode,
         opts = {
             spec = {
                 { "<BS>", desc = "Decrement Selection", mode = "x" },
@@ -10,6 +11,7 @@ return {
     },
     {
         'windwp/nvim-autopairs',
+        cond = not vim.g.vscode,
         event = "InsertEnter",
         config = true
         -- use opts = {} for passing setup options
